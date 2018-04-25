@@ -1,0 +1,19 @@
+.navbar.navbar-transparent .loader_gear {
+    color: #FFF;
+}
+
+.navbar.bg-white .loader_gear {
+    color: #888;
+}
+
+.submenu .nav {
+    background-color: #ffb335;
+  }
+
+  .dropdown-menu {
+    min-width: 6rem;
+  }
+  .form-check .form-check-label {
+    font-size: 1rem;
+    color: #222;
+}

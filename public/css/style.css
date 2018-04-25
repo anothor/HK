@@ -1,0 +1,45 @@
+.navbar .navbar-translate {
+  width: 100%;
+}
+.navbar .navbar-toggler {
+  width: 44px;
+  height: 30px;
+  border: 1px solid rgba(239, 239, 239, 0.15);
+  background-color: rgba(239, 239, 239, 0.25);
+}
+.navbar-brand img {
+    max-height: 75px;
+}
+.dropdown-menu {
+  margin: .75rem 0 0;
+}
+#btn-play-now p, #btn-topup p {
+  font-size: 1.2em;
+}
+.bg-cloud {
+  /* background-color: #f1f2f6 !important; */
+  background-color: #2a5788;
+}
+.form-group .input-group-addon, .input-group .input-group-addon {
+  padding: 10px;
+}
+.page-header .signup-page .container {
+  color: #444444;
+}
+
+
+/* media query Mobile */
+@media screen and (max-width: 756px){
+  .navbar .navbar-brand {
+    padding: 0rem;
+  }
+    .navbar-brand img {
+        max-height: 50px;
+    }
+}
+
+@media screen and (max-width: 991px){
+  .navbar .navbar-nav {
+    margin-top: 25px;
+  }
+}

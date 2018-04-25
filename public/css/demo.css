@@ -1,0 +1,39 @@
+/*
+Error: Invalid CSS after "...name: Floatingx": expected "{", was ";"
+        on line 1560 of /Users/anothor/Projects/Herekai/herekai-dev/public/sass/demo.scss
+
+1555:     -webkit-animation-duration: 16s;
+1556:     -moz-animation-duration: 16s;
+1557:     -webkit-animation-name: Floatingx;
+1558:     -moz-animation-name: Floatingx;
+1559: }
+1560: it-animation-name: Floatingx;
+1561:     -moz-animation-name: Floatingx;
+1562: }
+
+Backtrace:
+/Users/anothor/Projects/Herekai/herekai-dev/public/sass/demo.scss:1560
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1278:in `expected'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1208:in `expected'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1203:in `tok!'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:677:in `block'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:670:in `ruleset'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:696:in `block_child'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:689:in `block_contents'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:137:in `stylesheet'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:41:in `parse'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:414:in `_to_tree'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:391:in `run'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
+/Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
+/Applications/Koala.app/Contents/Resources/app.nw/bin/sass:22:in `load'
+/Applications/Koala.app/Contents/Resources/app.nw/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...name: Floatingx\": expected \"{\", was \";\"\A         on line 1560 of /Users/anothor/Projects/Herekai/herekai-dev/public/sass/demo.scss\A \A 1555:     -webkit-animation-duration: 16s;\A 1556:     -moz-animation-duration: 16s;\A 1557:     -webkit-animation-name: Floatingx;\A 1558:     -moz-animation-name: Floatingx;\A 1559: }\A 1560: it-animation-name: Floatingx;\A 1561:     -moz-animation-name: Floatingx;\A 1562: }"; }
