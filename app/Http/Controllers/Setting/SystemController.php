@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Setting;
 
+use App\Reward;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,6 +27,49 @@ class SystemController extends Controller
     public function create()
     {
         //
+    }
+
+    public function reward()
+    {
+    // $reward2 = $this->randomReward(2);
+    // $reward3 = $this->randomReward(3);
+
+    // $data['r2']=$reward2;
+    // $data['r3']=$reward3;
+
+    // dd($data);
+
+
+        $reward2 = new Reward;
+        $reward2->type = 2;
+        $reward2->number = $this->randomReward(2);
+        $reward2->save();
+        //
+        $reward3 = new Reward;
+        $reward3->type = 3;
+        $reward3->number = $this->randomReward(3);
+        $reward3->save();
+        
+        echo "23 ok";
+
+    }
+    public function randomReward($type){
+
+        if ($type == 2) {
+            $limit =99;
+        }elseif($type == 3){
+            $limit =999;
+        }
+
+        $no = (int)rand(0,$limit)+(int)idate('d');
+        if ($no > $limit) {
+            $reward=substr(strval($no),1);
+        }else{
+            $reward=strval($no);
+        }
+
+        return $reward;
+
     }
 
     /**

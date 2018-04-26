@@ -40,6 +40,31 @@ class CronJob extends Command
     public function handle()
     {
         //
+        $reward2=$this->randomReward(2);
+        $reward3=$this->randomReward(3);
+
+        DB::insert('insert into rewards (type,number) values (?, ?)', [2, $reward2]);
+        DB::insert('insert into rewards (type,number) values (?, ?)', [3, $reward3]);        
         
+        $this->info('random and added data successfully!!!');
+    }
+
+    public function randomReward($type){
+
+        if ($type == 2) {
+            $limit =99;
+        }elseif($type == 3){
+            $limit =999;
+        }
+
+        $no = (int)rand(0,$limit)+(int)idate('d');
+        if ($no > $limit) {
+            $reward=substr(strval($no),1);
+        }else{
+            $reward=strval($no);
+        }
+
+        return $reward;
+
     }
 }

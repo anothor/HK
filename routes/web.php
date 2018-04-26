@@ -20,6 +20,8 @@ Route::get('/manual', function () {
 
 Route::post('/settingUpdate','Setting\LottoController@settingUpdate');
 
+Route::get('/random','Setting\SystemController@reward');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -58,7 +60,7 @@ Route::group(['middleware'=>['web','auth']], function(){
     Route::resource('setting/users','Setting\UserController');
 
     Route::post('/setting/users/resetpassword','Setting\UserController@resetPassword');
-    
+
     Route::get('/setting/users/resetpassword/{id}/{username}', function ($id,$username) {
         $data['id']=$id;
         $data['username']=$username;
