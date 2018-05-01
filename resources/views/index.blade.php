@@ -70,7 +70,8 @@
                       <div class="col-md-7">
                           <div class="card-block text-center">
                               <p class="h2 mb-3">LINE ID</p>
-                              <button class="btn btn-primary btn-simple h2 m-0">0614569978</button>
+                              <a href="http://line.me/ti/p/~0614569978" target="_blank" class="btn btn-primary btn-simple h2 m-0">0614569978</a>
+                              <a href="http://line.me/ti/p/~0614569978" target="_blank" class="btn btn-neutral h4 mt-2 text-success">เพิ่มเพื่อน</a>
                           </div>
                       </div>
                   </div>

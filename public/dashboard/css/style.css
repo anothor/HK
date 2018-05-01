@@ -17,3 +17,13 @@
     font-size: 1rem;
     color: #222;
 }
+.gj-datepicker-bootstrap [role=right-icon] button {
+    margin: 0;
+    height: 38px;
+}
+.badge-default {
+    background-color: #aaa;
+}
+.badge-success {
+    background-color: #18ce0f;
+}

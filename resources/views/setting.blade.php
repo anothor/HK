@@ -41,6 +41,7 @@
               <h4 class="card-title">เวลาออกรางวัล</h4>
           </div>
           <div class="card-body text-center">
+          {{ now() }}
               <p class="h1 mb-0">15 นาที<small>น.</small></p>
           </div>
           <div class="card-footer mt-0 text-right">

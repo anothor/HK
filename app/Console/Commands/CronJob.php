@@ -40,13 +40,26 @@ class CronJob extends Command
     public function handle()
     {
         //
+        $app = DB::table('settings')->select('value')->where('app_key',1)->where('option','reward_time')->get()->toArray();
+        foreach ($app as $time) {
+            $runtime=$time->value;
+        }
+        
         $reward2=$this->randomReward(2);
         $reward3=$this->randomReward(3);
+        $datetime = now();
 
-        DB::insert('insert into rewards (type,number) values (?, ?)', [2, $reward2]);
-        DB::insert('insert into rewards (type,number) values (?, ?)', [3, $reward3]);        
+        $r2=DB::insert('insert into rewards (type,number,runtime,created_at) values (?, ?, ?, ?)', [2, $reward2, $runtime,$datetime]);
+        $r3=DB::insert('insert into rewards (type,number,runtime,created_at) values (?, ?, ?, ?)', [3, $reward3, $runtime,$datetime]);      
         
-        $this->info('random and added data successfully!!!');
+        // $r2=DB::table('rewards')->insert(
+        //     ['type' => '2', 'number' => $reward2, 'runtime' => $runtime]
+        // );
+        // $r3=DB::table('rewards')->insert(
+        //     ['type' => '3', 'number' => $reward3, 'runtime' => $runtime]
+        // );
+        
+        $this->info(now().'- Added data successfully | '.$reward2.' / '.$reward3);
     }
 
     public function randomReward($type){
@@ -60,6 +73,12 @@ class CronJob extends Command
         $no = (int)rand(0,$limit)+(int)idate('d');
         if ($no > $limit) {
             $reward=substr(strval($no),1);
+        }elseif($type == 2 && $no < 10){
+            $reward="0";
+            $reward.=strval($no);
+        }elseif($type == 3 && $no < 100){
+            $reward="0";
+            $reward.=strval($no);
         }else{
             $reward=strval($no);
         }

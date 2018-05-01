@@ -16,7 +16,8 @@ class CreateRewardsTable extends Migration
         Schema::create('rewards', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->unsignedSmallInteger('number');
+            $table->string('number');
+            $table->unsignedSmallInteger('runtime');
             $table->timestamps();
         });
     }

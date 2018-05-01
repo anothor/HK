@@ -20,6 +20,12 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
                 </a>
             </li>
             <li>
+                <a href="/setting/rewards">
+                    <i class="now-ui-icons sport_trophy"></i>
+                    <p>ผลออกรางวัล</p>
+                </a>
+            </li>
+            <li>
                 <a href="/setting">
                     <i class="now-ui-icons business_money-coins"></i>
                     <p>ระบบฝาก-ถอนเงิน</p>

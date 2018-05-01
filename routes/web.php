@@ -11,6 +11,42 @@
 |
 */
 
+//Clear Cache facade value:
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return '<h1>Cache facade value cleared</h1>';
+});
+
+//Reoptimized class loader:
+Route::get('/optimize', function() {
+    $exitCode = Artisan::call('optimize');
+    return '<h1>Reoptimized class loader</h1>';
+});
+
+//Route cache:
+Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return '<h1>Routes cached</h1>';
+});
+
+//Clear Route cache:
+Route::get('/route-clear', function() {
+    $exitCode = Artisan::call('route:clear');
+    return '<h1>Route cache cleared</h1>';
+});
+
+//Clear View cache:
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return '<h1>View cache cleared</h1>';
+});
+
+//Clear Config cache:
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return '<h1>Clear Config cleared</h1>';
+});
+
 Route::get('/', function () {
     return view('index');
 });
@@ -18,9 +54,10 @@ Route::get('/manual', function () {
     return view('manual');
 });
 
-Route::post('/settingUpdate','Setting\LottoController@settingUpdate');
-
 Route::get('/random','Setting\SystemController@reward');
+
+Route::get('/array','Setting\LottoController@getArray');
+
 
 Auth::routes();
 
@@ -28,12 +65,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/changePassword','HomeController@showChangePasswordForm');
 
-Route::post('/changePassword','HomeController@changePassword')->name('changepassword');
-
 Route::group(['middleware'=>['web','auth']], function(){
+
     Route::get('/profile', function () {
         return view('profile');
     });
+
+    Route::post('/changePassword','HomeController@changePassword')->name('changepassword');
 
     Route::get('/topup', function () {
         return view('topup');
@@ -52,6 +90,18 @@ Route::group(['middleware'=>['web','auth']], function(){
     Route::get('/lotto/rewards', function () {
         return view('lotto_rewards');
     });
+
+    Route::get('setting/rewards', function () {
+        return view('setting_reward');
+    });
+
+    Route::get('setting/rewards/get/','Setting\LottoController@getRewards');
+
+    Route::get('setting/rewards/winner/{id}', 'Setting\LottoController@getWinners');
+
+    Route::post('/settingUpdate','Setting\LottoController@settingUpdate');
+
+    Route::post('/generalUpdate','Setting\SystemController@generalUpdate');
 
     Route::resource('setting/lotto','Setting\LottoController');
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Setting;
 
 use App\Setting;
+use App\Reward;
+use App\Lotto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -41,17 +43,17 @@ class LottoController extends Controller
             $id_en = $row->id;
         }
 
-        $start = Setting::where('app_key',1)->where('option','reward_start')->get();
-        foreach($start as $row){
-            $reward_start = $row->value;
-            $id_st = $row->id;
-        }
+        // $start = Setting::where('app_key',1)->where('option','reward_start')->get();
+        // foreach($start as $row){
+        //     $reward_start = $row->value;
+        //     $id_st = $row->id;
+        // }
 
-        $end = Setting::where('app_key',1)->where('option','reward_end')->get();
-        foreach($end as $row){
-            $reward_end = $row->value;
-            $id_ren = $row->id;
-        }
+        // $end = Setting::where('app_key',1)->where('option','reward_end')->get();
+        // foreach($end as $row){
+        //     $reward_end = $row->value;
+        //     $id_ren = $row->id;
+        // }
 
         // $app = Setting::where('app_key',1)->get();
         // foreach($app as $options){
@@ -63,19 +65,67 @@ class LottoController extends Controller
         $data['id_price_3']=$id_p3;
         $data['id_runtime']=$id_t;
         $data['id_enable']=$id_en;                      
-        $data['id_start']=$id_st;                      
-        $data['id_end']=$id_ren;                      
+        // $data['id_start']=$id_st;                      
+        // $data['id_end']=$id_ren;                      
         $data['price_2']=$p2;
         $data['price_3']=$p3;
         $data['runtime']=$reward_time;
         $data['enable']=$reward_enable;
-        $data['start']=$reward_start;           
-        $data['end']=$reward_end;                           
+        // $data['start']=$reward_start;           
+        // $data['end']=$reward_end;                           
         $data['method']="put";
         $data['url']=url('setting/lotto');
 
         // dd($data);
         return view('setting_lotto',$data);
+    }
+
+    public function getArray(){
+        $time = DB::table('settings')->select('value')->where('app_key',1)->where('option','reward_time')->get()->toArray();
+        foreach ($time as $runtime) {
+            $data['runtime']=$runtime->value;
+        }
+        
+        // $app = Setting::where('app_key',1)->get()->toArray();
+        $app = DB::table('settings')->select('option','value')->where('app_key',1)->get()->toArray();
+        // dd($app);
+
+        foreach( $app as $options)
+            {
+                 // echo $options->option;
+                if ($options->option == "reward_time") {
+                    $data['runtime2']=$options->value;
+                }elseif($options->option == "reward_enable") {
+                    $data['activated']=$options->value;
+                }elseif($options->option == "reward_start") {
+                    $data['start']=$options->value;
+                }elseif($options->option == "reward_end") {
+                    $data['stop']=$options->value;
+                }
+            }
+        
+        // foreach( $app as $options)
+        // {
+            // dump($options);
+            // echo $options['option']
+
+            // if ($options['option'] == "reward_time") {
+            //         $data['runtime']=$options['value'];
+            // }elseif($options['option'] == "reward_enable") {
+            //         $data['activated']=$options['value'];
+            // }elseif($options['option'] == "reward_start") {
+            //         $data['start']=$options['value'];
+            // }elseif($options['option'] == "reward_end") {
+            //         $data['stop']=$options['value'];
+            // }
+        // }
+
+        if ($data['activated']) {
+            dd( $data);
+        }else{
+            echo "No data";
+        }
+
     }
 
     /**
@@ -129,50 +179,12 @@ class LottoController extends Controller
             $reward_enable=0;
         }
         // dd($request);
-        // if($request->form_setting=='price'){
-            // DB::table('settings')->where('app_key',1)->where('option','price_2')->update(['value'=>$request->price_2]);
             DB::table('settings')->where('id',$request->id_price_2)->update(['value'=>$request->price_2]);            
             DB::table('settings')->where('id',$request->id_price_3)->update(['value'=>$request->price_3]);
-            
-        //     return redirect(url('setting/lotto'))->with('success','บันทึกการตั้งค่าเรียบร้อย');
-        // }elseif ($request->form_setting=='time') {
-            # code...reward_time 
             DB::table('settings')->where('id',$request->id_runtime)->update(['value'=>$request->reward_time]);
-            DB::table('settings')->where('id',$request->id_enable)->update(['value'=>$reward_enable]);            
-            DB::table('settings')->where('id',$request->id_start)->update(['value'=>$request->reward_start]);            
-            DB::table('settings')->where('id',$request->id_end)->update(['value'=>$request->reward_end]);            
+            DB::table('settings')->where('id',$request->id_enable)->update(['value'=>$reward_enable]);                   
             return redirect(url('setting/lotto'))->with('success','บันทึกการตั้งค่าเรียบร้อย');            
-        // }
 
-
-        // $where = null;
-        // $count = Setting::count();
-
-        // DB::beginTransaction();
-
-        // for ($i = 1; $i < $count; $i++){
-        //     try{
-        //         if($i == 1){
-        //             $where = ['id' => $i, 'app_key' => 1, 'price_2'];
-        //             Setting::where($where)->update(['value' => $request->value_from_view]);
-        //         }else if ($i == 2){
-        //             $where = ['id' => $i, 'app_key' => 1, 'price_3'];
-        //             Setting::where($where)->update(['value' => $request->value_from_view]);
-        //         }else if ($i == 3){
-        //             $where = ['id' => $i, 'app_key' => 1, 'reward_time'];
-        //             Setting::where($where)->update(['value' => $request->value_from_view]);
-        //         }
-        //         DB::commit();	
-        //     }catct(QueryException $e){
-        //         DB::rollback();
-        //         return error หรือ throw new QueryException ก็ว่าไป
-        //     }	
-        // }
-        
-        // DB::transaction(function () {
-        //     DB::table('setting')->update('update users set votes = 100 where name = ?', ['John']);
-
-        // });
     }
 
     /**
@@ -184,28 +196,6 @@ class LottoController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        // dd($request);
-        
-        // if ($request->form_setting == 'price') {
-            // $p2 = Setting::find(1);
-            // // $p2 = Setting::where('app_key',1)->where('option', 'price_2');
-            // $p2->value = $request->2price;
-            // $p2-save();
-        //     dd($request);
-
-        //     return redirect(url('setting/lotto'))->with('success','บันทึกการตั้งค่าเรียบร้อย');
-            
-        // }
-        // $p2 = Setting::where('app_key',1)->where('option', 'price_2');
-        // $p2->value = $request['2price'];
-        // $p2-save();
-
-        // $p3 = Setting::where('app_key',1)->where('option', 'price_3');
-        // $p3->value = $request['3price'];
-        // $p3-save();
-
-
 
     }
 
@@ -219,4 +209,38 @@ class LottoController extends Controller
     {
         //
     }
+
+    public function getRewards(Request $request)
+    {
+        $date_start = $request->datepicked." 00:00:00";
+        $date_end = $request->datepicked." 23:59:59";
+        $date = $request->datepicked;
+        
+        $rewards = Reward::where('created_at','>=',$date_start)->where('created_at','<=',$date_end)->orderby('created_at','DESC')->get();        
+        // $data['rewards']=$rewards;  
+        // dd($data);
+        return view('setting_reward',compact('rewards','date')); 
+    }
+
+    public function getWinners(Request $request)
+    {
+        $rewards = DB::table('rewards')->where('id',$request->id)->get();
+        foreach ($rewards as $value) {
+            $reward['number']=$value->number;
+            $reward['type']=$value->type;
+            $reward['runtime']=$value->runtime;
+            $reward['round']=$value->created_at;
+        }
+
+        $number = $reward['number'];
+        $round = $reward['round'];
+        $round_start = date('Y-m-d H:i:s',strtotime('-'.$reward['runtime'].' minutes',strtotime($reward['round'])));
+
+        $winners = DB::table('lottos')->where('number',$reward['number'])->where('type',$reward['type'])->whereBetween('created_at', [$round_start, $reward['round']])->get();
+
+        // dd($winners);
+        return view('setting_reward_winner',compact('winners','number','round')); 
+    }
+
+
 }
