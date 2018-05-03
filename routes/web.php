@@ -83,12 +83,16 @@ Route::group(['middleware'=>['web','auth']], function(){
 
     Route::resource('lotto','LottoController');
 
-    // Route::get('/lottoBuy', function () {
-    //     return view('lotto_buy');
-    // });
+    Route::get('lotto-check','LottoController@check');
 
-    Route::get('/lotto/rewards', function () {
-        return view('lotto_rewards');
+    Route::get('lotto-check-number', 'LottoController@getNumber');
+
+    Route::get('lotto-check-reward/{id}', 'LottoController@getReward');
+
+    Route::get('lotto-get-money/{id}', 'LottoController@getMoney');
+
+    Route::get('lotto-reward-success', function () {
+        return view('lotto_reward_success');
     });
 
     Route::get('setting/rewards', function () {

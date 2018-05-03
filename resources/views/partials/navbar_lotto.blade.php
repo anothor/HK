@@ -16,37 +16,9 @@
                     <p>ซื้อหวย</p>
                 </a>
             </li>
-            <!-- <li>
-                    <a data-toggle="collapse" href="#buyType">
-                      
-                    <i class="now-ui-icons education_atom"></i>
-                    <p>ซื้อหวย <b class="caret"></b></p>
-                      
-                    </a>
-
-                    <div class="collapse submenu" id="buyType">
-                        <ul class="nav">
-                        
-                          <li>
-                              <a href="{{ url('/lottoBuy/2') }}">
-                                  <p>2 ตัว</p>
-                              </a>
-                          </li>
-                        
-                          <li>
-                              <a href="{{ url('/lottoBuy/3') }}">
-                                  <p>3 ตัว</p>
-                              </a>
-                          </li>
-                        
-                      </ul>
-                  </div>
-
-                  
-              </li> -->
             <li>
-                <a href="{{ url('/lotto/rewards') }}">
-                    <i class="now-ui-icons objects_diamond"></i>
+                <a href="{{ url('lotto-check') }}">
+                <i class="now-ui-icons sport_trophy"></i>
                     <p>ผลรางวัล</p>
                 </a>
             </li>

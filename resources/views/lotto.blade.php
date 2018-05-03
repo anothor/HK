@@ -49,7 +49,7 @@
                                                     {{ $item->number }}
                                                 </td>
                                                 <td>
-                                                    {{ $item->created_at->format('d/m/Y H:i') }}
+                                                    {{ $item->created_at->format('Y-m-d H:i') }}
                                                 </td>
                                                 <!-- <td>
                                                     {{ $item->created_at->format('H:i') }}
@@ -76,18 +76,6 @@
           <h4 class="card-title">ผลรางวัลประจำวัน</h4>
       </div>
       <div class="card-body">
-        <strong class="mb-0">รอบเวลา 10:30 น.</strong>
-        <div class="row text-center">
-          <div class="col-6">
-            <button class="btn btn-primary btn-block"><h2 class="mb-0">22</h2></button>
-            <p class="mb-0">เลข 2 ตัว</p>
-          </div>
-          <div class="col-6">
-            <button class="btn btn-primary btn-block"><h2 class="mb-0">333</h2></button>
-            <p class="mb-0">เลข 3 ตัว</p>
-          </div>
-        </div>
-        <hr>
         <div class="table-responsive">
             <table class="table">
                 <thead class=" text-primary">
@@ -95,57 +83,27 @@
                         เวลา
                     </th>
                     <th>
-                        2 ตัว
+                        ประเภท
                     </th>
                     <th>
-                        3 ตัว
+                        เลข
                     </th>
                 </tr></thead>
                 <tbody>
+                    
+                    @foreach(getRecentReward(10) as $number)
                     <tr>
                         <td>
-                            10:15
+                        {{ date('Y-m-d H:i',strtotime($number->created_at)) }}
                         </td>
                         <td>
-                            12
+                            {{ $number->type }}
                         </td>
                         <td>
-                            876
+                            {{ $number->number }}
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            10:00
-                        </td>
-                        <td>
-                            12
-                        </td>
-                        <td>
-                            876
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            09:45
-                        </td>
-                        <td>
-                            12
-                        </td>
-                        <td>
-                            876
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            09:30
-                        </td>
-                        <td>
-                            12
-                        </td>
-                        <td>
-                            876
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -158,13 +116,13 @@
     </div>
   </div>
   <div class="col-md-3">
-    <div class="card">
-      <div class="card-header">
+    <div class="card text-center">
+    <div class="card-header">
           <h4 class="card-title">เงินรางวัล</h4>
       </div>
       <div class="card-body">
-        <h5>2 ตัว บาทละ 90</h5>
-        <h5>3 ตัว บาทละ 800</h5>
+        <h5>2 ตัว บาทละ {{ getPriceNumber(2) }}</h5>
+        <h5>3 ตัว บาทละ {{ getPriceNumber(3) }}</h5>
       </div>
     </div>
   </div>

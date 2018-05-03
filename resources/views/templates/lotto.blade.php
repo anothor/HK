@@ -17,12 +17,13 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Prompt:300,400,500" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="{{ asset('dashboard/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dashboard/css/now-ui-dashboard.min.css') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!-- <link href="{{ asset('dashboard/demo/demo.css') }}" rel="stylesheet" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/datatables.min.css"/>
     <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet" />
 </head>
 
@@ -115,7 +116,22 @@
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('dashboard/js/now-ui-dashboard.js?v=1.0.1') }}"></script>
     <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('dashboard/demo/demo.js') }}"></script>
+    <!-- <script src="{{ asset('dashboard/demo/demo.js') }}"></script> -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/datatables.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#rewardTable').DataTable({
+                "order": [0, 'desc']
+            });
+        } );
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'yyyy-mm-dd'
+        });
+    </script>
 
   </body>
 </html>

@@ -35,3 +35,27 @@ function getPriceNumber($type)
     }
     return $price;
 }
+
+function getRumtime()
+{
+    $setting = DB::table('settings')->select('value')->where('option','reward_time')->get();
+    foreach ($setting as $value) {
+        $runtime=$value->value;
+    }
+    return $runtime;
+}
+
+function getRecentReward($limit)
+{
+    $rewards = DB::table('rewards')->orderBy('id','DESC')->limit($limit)->get();
+    return $rewards;
+}
+
+function gotReward($id)
+{
+    $grw = DB::table('lottos')->select('get_reward')->where('id',$id)->get();
+    foreach ($grw as $value) {
+        $status=$value->get_reward;
+    }
+    return $status;
+}

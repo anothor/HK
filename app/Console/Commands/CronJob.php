@@ -79,6 +79,9 @@ class CronJob extends Command
         }elseif($type == 3 && $no < 100){
             $reward="0";
             $reward.=strval($no);
+        }elseif($type == 3 && $no < 10){
+            $reward="00";
+            $reward.=strval($no);
         }else{
             $reward=strval($no);
         }

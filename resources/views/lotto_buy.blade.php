@@ -11,7 +11,7 @@
                             <div class="card-header">
                                 <div class="d-flex">
                                     <div> <h3 class="card-title">ซื้อหวย</h3></div>
-                                    <div class="ml-auto"><p class="mt-4">{{ now()->format('d/m/Y H:i') }}</p></div>
+                                    <div class="ml-auto"><p class="mt-4">{{ now()->format('Y-m-d H:i') }}</p></div>
                                 </div>
                                 <!-- <div class="text-right">
                                     <button type="button" name="add" id="add" class="btn btn-success h6 m-0"><i class="now-ui-icons ui-1_simple-add"></i> เพิ่ม</button>
@@ -71,24 +71,45 @@
       <div class="card-header text-center">
           <h4 class="card-title">เงินรางวัล</h4>
       </div>
-      <div class="card-body">
-        <h5>2 ตัว บาทละ 90</h5>
-        <h5>3 ตัว บาทละ 800</h5>
+      <div class="card-body text-center">
+        <h5>2 ตัว บาทละ {{ getPriceNumber(2) }}</h5>
+        <h5>3 ตัว บาทละ {{ getPriceNumber(3) }}</h5>
       </div>
         <hr>
       <div class="card-header text-center">
           <h4 class="card-title">เลขที่ออกล่าสุด</h4>
       </div>
       <div class="card-body">
-        <div class="row text-center">
-          <div class="col-6">
-            <button class="btn btn-primary btn-block"><h2 class="mb-0">22</h2></button>
-            <p class="mb-0">เลข 2 ตัว</p>
-          </div>
-          <div class="col-6">
-            <button class="btn btn-primary btn-block"><h2 class="mb-0">333</h2></button>
-            <p class="mb-0">เลข 3 ตัว</p>
-          </div>
+      <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <tr><th>
+                        เวลา
+                    </th>
+                    <th>
+                        ประเภท
+                    </th>
+                    <th>
+                        เลข
+                    </th>
+                </tr></thead>
+                <tbody>
+                    
+                    @foreach(getRecentReward(10) as $number)
+                    <tr>
+                        <td>
+                        {{ date('Y-m-d H:i',strtotime($number->created_at)) }}
+                        </td>
+                        <td>
+                            {{ $number->type }}
+                        </td>
+                        <td>
+                            {{ $number->number }}
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
       </div>
     </div>
