@@ -38,7 +38,7 @@
                     <div class="card-body px-5">
                         <h4 class="card-title text-center">เมนู</h4>
                         <a href="{{ url('changePassword') }}" class="btn btn-tumblr btn-block">เปลี่ยนรหัสผ่าน</a>
-                        <a href="{{ url('topup') }}" class="btn btn-success btn-block">เติมเงิน / ถอนเงิน</a>
+                        <a href="{{ url('transfer') }}" class="btn btn-success btn-block">เติมเงิน / ถอนเงิน</a>
                         <a href="{{ url('home') }}" class="btn btn-info btn-block">เข้าเล่นเกม</a>                      
                     </div>
                 </div>
