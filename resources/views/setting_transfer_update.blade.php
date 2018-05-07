@@ -44,7 +44,7 @@
   <div class="col-md-5">
       <div class="card card-chart">
           <div class="card-body">
-                <img src="{{ url($slip) }}" alt="slip" class="mb-4">
+                <img src="{{ asset('storage/'.$slip) }}" alt="slip" class="mb-4">
           </div>
       </div>
   </div>
