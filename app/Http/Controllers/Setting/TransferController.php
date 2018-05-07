@@ -80,7 +80,8 @@ class TransferController extends Controller
         $data['user_id']=$transfers->user_id;
         $data['bank']=$transfers->bank;
         $data['money']=$transfers->money;
-        $data['slip']= Storage::url($transfers->slip);
+        //$data['slip']= Storage::url($transfers->slip);
+        $data['slip']= $transfers->slip;
         $data['status']=$transfers->status;
         $data['created_at']=$transfers->created_at;
         
