@@ -5,9 +5,9 @@
                 <a class="btn btn-warning btn-simple credit-balance my-0 mr-3"><h2 class="m-0 text-warning"><strong>฿{{ Auth::user()->money }}</strong></h2></a>
             </li>
             <li>
-                <a href="/topup">
+                <a href="/transfer">
                     <i class="now-ui-icons business_money-coins"></i>
-                    <p>เติมเงิน</p>
+                    <p>เติมเงิน / ถอนเงิน</p>
                 </a>
             </li>
             @if(Auth::user()->is_admin)
