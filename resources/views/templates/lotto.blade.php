@@ -126,6 +126,10 @@
             $('#rewardTable').DataTable({
                 "order": [0, 'desc']
             });
+
+            $('#transferTable').DataTable({
+                "order": [0, 'desc']
+            });
         } );
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',

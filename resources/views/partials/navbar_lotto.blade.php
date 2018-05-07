@@ -2,7 +2,7 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li>
-                <a class="btn btn-warning btn-simple credit-balance my-0 mr-3"><h2 class="m-0 text-warning"><strong>฿{{ Auth::user()->money }}</strong></h2></a>
+                <a class="btn btn-warning btn-simple credit-balance my-0 mr-3"><h2 class="m-0 text-warning"><strong>฿{{ number_format(Auth::user()->money) }}</strong></h2></a>
             </li>
             <li>
                 <a href="{{ url('/lotto') }}">
@@ -23,9 +23,9 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('/topup') }}">
+                <a href="{{ url('/transfer') }}">
                     <i class="now-ui-icons business_money-coins"></i>
-                    <p>เติมเงิน</p>
+                    <p>เติมเงิน / ถอนเงิน</p>
                 </a>
             </li>
             <li>

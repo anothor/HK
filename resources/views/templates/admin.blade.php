@@ -106,10 +106,14 @@
 
 <script>
     $(document).ready( function () {
-        $('#rewardTable').DataTable({
-            "order": [0, 'desc']
-        });
-    } );
+            $('#rewardTable').DataTable({
+                "order": [0, 'desc']
+            });
+
+            $('#transferTable').DataTable({
+                "order": [0, 'desc']
+            });
+        } );
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
             format: 'yyyy-mm-dd'

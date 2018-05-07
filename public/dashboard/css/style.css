@@ -27,9 +27,12 @@
 .badge-success {
     background-color: #18ce0f;
 }
-.pagination li {
+.stats .pagination li {
     background-color: #cccccc;
     margin: 0 10px;
     padding: 0 10px;
     border-radius: 3px;
+}
+strong.card-title {
+    font-size: 16px;
 }

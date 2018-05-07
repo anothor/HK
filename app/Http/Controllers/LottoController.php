@@ -20,7 +20,7 @@ class LottoController extends Controller
     public function index()
     {
         //
-        $obj = Lotto::where('user_id',Auth::user()->id)->simplePaginate(2);
+        $obj = Lotto::where('user_id',Auth::user()->id)->simplePaginate(5);
         $data['obj']=$obj;
         return view('lotto',$data);
     }

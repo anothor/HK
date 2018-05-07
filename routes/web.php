@@ -74,12 +74,20 @@ Route::group(['middleware'=>['web','auth']], function(){
     Route::post('/changePassword','HomeController@changePassword')->name('changepassword');
 
     Route::get('/topup', function () {
+        dd($request);
         return view('topup');
     });
 
     // Route::get('/lotto', function () {
     //     return view('lotto');
     // });
+    Route::resource('transfer','TransferController'); 
+
+    Route::get('transfer-form/{type}','TransferController@formTransfer');     
+
+    // Route::get('transfer-topup','TransferController@topup'); 
+
+    // Route::get('transfer-withdraw','TransferController@withdraw'); 
 
     Route::resource('lotto','LottoController');
 
@@ -110,6 +118,12 @@ Route::group(['middleware'=>['web','auth']], function(){
     Route::resource('setting/lotto','Setting\LottoController');
 
     Route::resource('setting/general','Setting\SystemController');
+
+    Route::resource('setting/transfer','Setting\TransferController');
+
+    Route::get('setting/transfer-update/{id}','Setting\TransferController@transferUpdate');
+
+    Route::get('setting/transfer-cancel/{id}','Setting\TransferController@transferCancel');    
 
     Route::resource('setting/users','Setting\UserController');
 

@@ -26,9 +26,9 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
                 </a>
             </li>
             <li>
-                <a href="/setting">
+                <a href="/setting/transfer">
                     <i class="now-ui-icons business_money-coins"></i>
-                    <p>ระบบฝาก-ถอนเงิน</p>
+                    <p>ระบบเติมเงิน-ถอนเงิน</p>
                 </a>
             </li>
             <li>
